@@ -90,4 +90,10 @@ Sou **Shelly** 🐚 — uma desenvolvedora em formação apaixonada por tecnolog
 Gosto de transformar ideias em projetos reais, focando sempre na atenção aos detalhes.
 
 📎 Você me encontra por aqui:  
-[GitHub](https://github.com/shell-y) · [LinkedIn](https://www.linkedin.com/in/shellynadudvari/)
+<a href="https://github.com/shell-y" target="_blank">🐙 GitHub</a> · 
+<a href="https://www.linkedin.com/in/shellynadudvari/" target="_blank">💼 LinkedIn</a>
+
+---
+
+Com carinho,  
+**Shelly 🐚💫**
