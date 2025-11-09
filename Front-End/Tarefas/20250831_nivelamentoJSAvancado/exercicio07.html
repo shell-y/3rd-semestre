@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Nome do contato:<br>
+    <input type="text" id="nomeContato"><br>
+
+    Telefone:<br>
+    <input type="text" id="telefoneContato"><br><br>
+
+    <button onclick="adicionarContato()">Adicionar contato</button>
+    <button onclick="exibirContatos()">Exibir contatos</button><br><br>
+
+    Remover contato pelo nome:<br>
+    <input type="text" id="nomeRemover">
+    <button onclick="removerContato()">Remover contato</button>
+
+    <div id="divResultado"></div>
+</body>
+</html>
+
+<script>
+    const contatos = [];
+
+        function adicionarContato() {
+            const nome = nomeContato.value;
+            const telefone = telefoneContato.value;
+
+            contatos.push({ nome, telefone });
+
+            divResultado.innerHTML = `Contato ${nome} adicionado com sucesso!`;
+
+            nomeContato.value = '';
+            telefoneContato.value = '';
+            nomeContato.focus();
+        }
+
+        function exibirContatos() {
+            divResultado.innerHTML = '';
+            const contatosOrdenados = contatos.toSorted((a, b) => a.nome.localeCompare(b.nome));
+
+            contatosOrdenados.forEach(c => {
+                divResultado.innerHTML += `${c.nome}: ${c.telefone}<br>`;
+            });
+        }
+
+        function removerContato() {
+            const nome = nomeRemover.value;
+
+            const index = contatos.findIndex(c => c.nome.toLowerCase() === nome.toLowerCase());
+
+            contatos.splice(index, 1);
+
+            divResultado.innerHTML = `Contato "${nome}" removido com sucesso!`;
+
+            nomeRemover.value = '';
+            nomeRemover.focus();
+        }
+</script>

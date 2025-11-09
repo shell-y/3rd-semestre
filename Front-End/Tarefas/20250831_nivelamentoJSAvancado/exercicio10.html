@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Selecione sua atividade favorita:<br>
+    <select id="atividade">
+        <option value="Corrida">Corrida</option>
+        <option value="Natação">Natação</option>
+        <option value="Yoga">Yoga</option>
+        <option value="Musculação">Musculação</option>
+        <option value="Ciclismo">Ciclismo</option>
+    </select><br><br>
+
+    <button onclick="votar()">Votar</button>
+    <button onclick="mostrarResultado()">Resultado</button>
+
+    <div id="divResultado"></div>
+</body>
+</html>
+
+<script>
+    const votos = [];
+
+        function votar() {
+            const selecionada = atividade.value;
+
+            votos.push(selecionada);
+
+            divResultado.innerHTML = `Voto registrado para ${selecionada}!`;
+        }
+
+        function mostrarResultado() {
+            divResultado.innerHTML = '';
+            
+            // Obter lista de atividades únicas
+            const atividadesUnicas = [...new Set(votos)];
+
+            // Contar votos para cada atividade
+            const resultado = atividadesUnicas.map(a => {
+                const total = votos.reduce((acc, v) => v === a ? acc + 1 : acc, 0);
+                return { atividade: a, votos: total };
+            });
+
+            // Exibe resultados
+            resultado.forEach(r => {
+                divResultado.innerHTML += `${r.atividade}: ${r.votos} voto(s)<br>`;
+            });
+
+            // Determina a atividade mais votada
+            const maxVotos = resultado.reduce((max, r) => r.votos > max ? r.votos : max, 0);
+            const maisVotada = resultado.filter(r => r.votos === maxVotos).map(r => r.atividade).join(', ');
+
+            divResultado.innerHTML += `<br>Atividade mais votada: ${maisVotada}!`;
+        }
+</script>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <select id="selectPreferencia">
+        <option value="#" selected disabled>Escolha o seu favorito...</option>
+        <option value="cafe">Café</option>
+        <option value="cha">Chá</option>
+        <option value="suco">Suco</option>
+    </select>
+    <button onclick="registrarVoto(selectPreferencia.value)">Votar</button>
+    <button onclick="calcularResultados()">Ver resultado</button>
+    <br><br>
+    <div id="divResultado"></div>
+</body>
+
+</html>
+<script>
+    listaVotos = [];
+    var votosCafe = 0;
+    var votosCha = 0;
+    var votosSuco = 0;
+    function registrarVoto(voto) {
+        listaVotos.push(voto);
+        if (voto == "cafe") votosCafe++;
+        if (voto == "cha") votosCha++;
+        if (voto == "suco") votosSuco++;
+        selectPreferencia.value = "#";
+        selectPreferencia.focus();
+    }
+    function calcularResultados() {
+        divResultado.innerHTML = ``;
+
+        var maiorVoto = votosCafe;
+        var vencedor = "Café";
+        
+        if(votosCha > maiorVoto) {
+            maiorVoto = votosCha;
+            vencedor = "Chá";
+        }else if(votosSuco > maiorVoto){
+            maiorVoto = votosSuco;
+            vencedor = "Suco";
+        }
+
+        divResultado.innerHTML=`
+        Café - ${votosCafe}<br>
+        Chá - ${votosCha}<br>
+        Suco - ${votosSuco}<br><br>
+        ${vencedor} está ganhando com ${maiorVoto} votos!`
+    }
+</script>

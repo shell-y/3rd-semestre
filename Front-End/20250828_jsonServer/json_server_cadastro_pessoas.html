@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Formulário Pessoas</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f5f7fa;
+      color: #333;
+    }
+
+    h2,
+    h3 {
+      text-align: center;
+      color: #2c3e50;
+    }
+
+    .form-container {
+      max-width: 500px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .form-group input {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    button {
+      flex: 1;
+      /* ocupa espaço igualmente */
+      background: #3498db;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #2980b9;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      background: #ecf0f1;
+      margin: 5px 0;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>Cadastro de Pessoas</h2>
+
+  <div class="form-container">
+    <div class="form-group">
+      <label for="id">ID:</label>
+      <input type="text" id="id" />
+    </div>
+
+    <div class="form-group">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" />
+    </div>
+
+    <div class="buttons">
+      <button onclick="adicionar()">Adicionar</button>
+      <button onclick="alterar()">Alterar</button>
+      <button onclick="remover()">Remover</button>
+    </div>
+
+    <h3>Lista de Pessoas</h3>
+    <ul id="lista"></ul>
+  </div>
+
+  <script>
+    let pessoas = [];
+    const baseURL = "http://localhost:8080/pessoas";
+    const idValor = id.value;
+    const nomeValor = nome.value;
+
+    function mostrar() {
+      lista.innerHTML = ``;
+      fetch(baseURL) //por padrão, o fetch faz get
+        .then(
+          response => response.json() //transforma a response em json
+        )
+        .then(json => {
+          json.forEach(element => lista.innerHTML += `ID: ${element.id}<br>NOME: ${element.nome}<br><br>`)
+        })
+        .catch(
+          error => console.log("deu ruim", error)
+        )
+    }
+
+    function adicionar() {
+
+      fetch(baseURL, {
+        method: "POST",
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify({
+          nome: nomeValor
+        })
+      })
+        .then(() => {
+          console.log("OK adicionar");
+          mostrar();
+        })
+        .catch(
+          error => console.log("deu ruim em adicionar", error)
+        )
+    }
+
+    function alterar() {
+
+      fetch(`${baseURL}/${idValor}`, {
+        method: "PATCH",
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify({
+          id: idValor,
+          nome: nomeValor
+        })
+      })
+        .then(() => {
+          console.log("OK alterar");
+          mostrar();
+        })
+        .catch(
+          error => console.log("deu ruim em alterar", error)
+        )
+    }
+
+    function remover() {
+
+      fetch(`${baseURL}/${idValor}`, {
+        method: "DELETE"
+      })
+        .then(() => {
+          console.log("OK remover");
+          mostrar();
+        })
+        .catch(
+          error => console.log("deu ruim em remover", error)
+        )
+    }
+  </script>
+</body>
+
+</html>

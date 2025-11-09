@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="inputNome" placeholder="Nome do aluno...">
+    <input type="number" id="inputIdade" placeholder="Idade do aluno...">
+    <button onclick="cadastrarAluno(inputNome.value,inputIdade.value)">Cadastrar</button>
+    <button onclick="exibirTodos()">Exibir todos</button>
+    <br><br>
+    De... <input type="number" id="inputFrom"> 
+    Até... <input type="number" id="inputUntil">
+    <button onclick="filtrar(inputFrom.value,inputUntil.value)">Filtrar por idade</button>
+    <br><br>
+    <div id="divResultado"></div>
+</body>
+</html>
+<script>
+    listaAlunos=[];
+    function cadastrarAluno(nome,idade){
+        listaAlunos.push({nome,idade});
+        inputNome.value = "";
+        inputIdade.value = "";
+        inputNome.focus();
+    }
+    function exibirTodos(){
+        divResultado.innerHTML=``;
+        for(let i = 0; i < listaAlunos.length; i++){
+            divResultado.innerHTML+=`<b>Aluno:</b> ${listaAlunos[i].nome} | <b>Status:</b> ${listaAlunos[i].idade}<br>`
+        }
+    }
+    function filtrar(de,ate){
+        divResultado.innerHTML=``;
+        for(let i = 0; i < listaAlunos.length; i++){
+            if(listaAlunos[i].idade >= de && listaAlunos[i].idade <= ate){
+            divResultado.innerHTML+=`<b>Aluno:</b> ${listaAlunos[i].nome} | <b>Status:</b> ${listaAlunos[i].idade}<br>`
+            }
+        }
+        inputFrom.value=``;
+        inputUntil.value=``;
+    }
+</script>

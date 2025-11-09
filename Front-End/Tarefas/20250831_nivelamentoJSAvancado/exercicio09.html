@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Nome do filme:<br>
+    <input type="text" id="nomeFilme"><br>
+
+    Gênero do filme:<br>
+    <input type="text" id="generoFilme"><br><br>
+
+    <button onclick="cadastrarFilme()">Cadastrar</button><br><br>
+
+    Filtrar por gênero:<br>
+    <input type="text" id="filtroGenero">
+    <button onclick="filtrarPorGenero()">Filtrar por gênero</button>
+
+    <div id="divResultado"></div>
+</body>
+</html>
+
+<script>const filmes = [];
+
+        function cadastrarFilme() {
+            const nome = nomeFilme.value;
+            const genero = generoFilme.value;
+
+            filmes.push({ nome, genero });
+
+            divResultado.innerHTML = `Filme "${nome}" do gênero "${genero}" cadastrado com sucesso!`;
+
+            nomeFilme.value = '';
+            generoFilme.value = '';
+            nomeFilme.focus();
+        }
+
+        function filtrarPorGenero() {
+            const filtro = filtroGenero.value.toLowerCase();
+
+            const filmesFiltrados = filmes.filter(f => f.genero.toLowerCase() === filtro);
+
+            if(filmesFiltrados.length === 0) {
+                divResultado.innerHTML = `Nenhum filme encontrado para o gênero "${filtro}".`;
+                return;
+            }
+
+            divResultado.innerHTML = `Filmes do gênero "${filtro}":<br>`;
+            filmesFiltrados.forEach(f => {
+                divResultado.innerHTML += `${f.nome}<br>`;
+            });
+        }</script>

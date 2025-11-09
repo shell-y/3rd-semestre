@@ -1,0 +1,21 @@
+.: ANOTAÇÕES PROGRAMAÇÃO WEB [13.08.2025]
+
+Dependência Spring Web -> Permite criar projetos WEB criando bibliotecas do tipo REST
+
+Para criar o Controller: botão direito no pacote principal do projeto (pasta) > new package > 'nome.Controller'
+
+Model: mantém o modelo do obj que eu quero.
+
+as @Annotations precisam estar "coladas" com o método, sem espaços ou pular linha
+
+Projeto REST dependências:
+Spring Web -> inicializar padrão web
+Spring Boot DevTools -> dependência de live reload, para fazer modificações no projeto sem precisar pará-lo.
+
+pom.xml -> para adicionar manualmente uma nova dependência
+
+**********************************************************
+
+Exercício:
+Crie um projeto Spring que contenha um endpoint que exiba seu nome;
+e um segundo endpoint que receba um número qualquer e exiba a multiplicação dele por 5

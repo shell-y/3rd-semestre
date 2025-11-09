@@ -1,0 +1,100 @@
+.: Anotações Programação Web Back-End :.
+
+Spring web
+JPA
+H2
+Lombok
+
+- SERIALIZAÇÃO:
+transformar os valores em Json
+
+- DESSERIALIZAÇÃO:
+pegar do padrão Json e transformar no padrão de variáveis
+
+SOBRE A CRIAÇÃO DE GETTERS E SETTERS:
+- para aplicações pequenas ~> Lombok
+- quando inclui toda uma arquitetura, manter o controle em toda a aplicação, dados sensíveis sem necessidade constante de debugs ~> fazer manualmente
+
+- BANCO DE DADOS H2
+BD em memória para TESTES
+
+- APPLICATION.PROPERTIES
+resources > application.properties
+para fazer alterações nas configurações do projeto
+
+- SPRING BOOT DEVTOOLS
+dependência para não precisar ficar restartando o projeto
+
+- DTO: Data Transfer Object
+
+- Entity: nome da dependência
+- Repository: nome do local de armazenamento
+
+- HIBERNATE ????
+
+{17/09/2025}
+
+Criar pacotes de acordo com as suas "responsabilidades"
+
+{24/09/2025}
+
+---------*.:PADRÕES CRIACIONAIS (Design Patterns):
+
+- CRIACIONAIS ~> lidam com a criação de objetos de forma flexível.
++Singleton: 
++Factory Method: criar objetos em tempo de execução.
+
+- ESTRUTURAIS ~> focam na composição de classes e objetos para formar estruturas maiores. Itens que vão ajudar a adaptar, ou seja, criam novas funcionalidades de forma "externa", sem alterar a classe padrão.
++Adapter: permite que classes com interfaces incompatíveis trabalhem juntas trabalhando como adaptador entre elas.
++Decorator: adiciona funcionalidades a um objeto dinamicamente, sem alterar sua estrutura.
+
+- COMPORTAMENTAIS ~> definem a interação e responsabilidade entre objetos. Servem para adicionar ou remover comportamentos que já existem em um projeto.
++Observer: Comunicação 1 para muitos. Notifica os objetos dependentes sobre qualquer mudança de estado no objeto "principal".
++Strategy: como se fosse um "roteador"
+
+Os padrões criacionais podem ser usados tanto individualmente quanto juntos.
+http://refactoring.guru -> explicações e exemplos de design patterns
+
+---------*.:PRINCÍPIOS S.O.L.I.D.
+Conjunto de cinco princípios (acrônimos para SOLID) de design de software. Guiam a escolha de Design Patterns.
+
+{29/10/2025}
+
+---------*.:AGENDAMENTO:
+Dependências Webflux + Quartz;
+
+@EnableScheduling
+anotação na classe main (ProjetoApplication.java)
+
+
+{05/11/2025}
+
+---------*.:TESTES
+Considerar a regra de negócio para a criação dos testes.
+
+Cenários de testes:
++ Caminho feliz
++ Cenários que podem causar erro na minha aplicação
+
+PI: Mínimo de 20 testes unitários para o projeto (pode ser que dê mais de 20 testes). Considerar as regras da aplicação.
+
+Spring já vem com o JUnit embutido.
+
+Dar nomes aos testes que sejam autoexplicativos.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

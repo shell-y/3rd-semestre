@@ -1,0 +1,7 @@
+.: ANOTAÇÕES BACK-END :.
+
+Método é a mesma coisa que Verbo
+
+Entidade (mundo POO) é uma Classe criada para espelhar uma Tabela (mundo relacional)
+
+@JsonIgnore -> para impedir a inclusão do atributo abaixo (mesmo que ele tenha um getter)

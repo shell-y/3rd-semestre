@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Desafio CRUD</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="div-mae">
+        <h1>O Incrível Mundo de Gumball</h1>
+        <div class="div-fora">
+            <span class="descricao">
+                Vamos montar um catálogo de personagens de <i>O Incrível Mundo de Gumball!</i>
+                <br>
+                De quantos personagens você consegue se lembrar?
+            </span>
+
+            <div class="div-inputs">
+                <input style="width: 15%;" class="texto-rainbow div-dentro" spellcheck="false" placeholder="ID" id="id">
+                <input style="width: 80%;" class="texto-rainbow div-dentro" spellcheck="false"
+                    placeholder="Nome do personagem" id="nome">
+            </div>
+
+            <div class="div-botoes">
+                <button class="glossy-button btn1" onclick="adicionar()">Adicionar</button>
+                <button class="glossy-button btn2" onclick="remover()">Remover</button>
+                <button class="glossy-button btn3" onclick="editar()">Alterar</button>
+                <button class="glossy-button btn4" onclick="exibir()">Exibir Todos</button>
+            </div>
+
+            <div class="div-dentro texto-branco" id="lista" style="display: none;">
+            </div>
+
+            <div class="imagens">
+                <img src="brilin.gif" width="150px" height="100%">
+                <img src="anais.gif" width="40px" height="100%">
+                <img src="gumball.gif" width="40px" height="100%">
+                <img src="darwin.gif" width="40px" height="100%">
+                <img src="brilin.gif" width="150px" height="100%" style="transform:scaleX(-1);">
+            </div>
+        </div>
+
+        <footer class="footer">
+            SPTech - 2025 - ADSA
+            <br>Shelly Nadudvari
+        </footer>
+
+    </div>
+</body>
+
+</html>
+
+<script>
+    const baseURL = "http://localhost:8080/personagens";
+
+    const nomeInput = document.getElementById("nome");
+    const idInput = document.getElementById("id");
+    const lista = document.getElementById("lista");
+
+    function exibir() {
+        lista.innerHTML = "";
+        fetch(baseURL)
+            .then(res => res.json())
+            .then(json => {
+                json.length === 0 ? lista.style.display = "none" : lista.style.display = "block";
+                json.forEach(p => {
+                    lista.innerHTML += `#${p.id} ~ <b>Personagem:</b> ${p.nome}<br>`;
+                });
+            })
+            .catch(err => console.log("Erro ao exibir:", err));
+    }
+
+    function adicionar() {
+        const nome = nomeInput.value.trim();
+        const id = idInput.value.trim();
+
+        if (!nome || !id) {
+            lista.style.display = "block";
+            return lista.innerHTML = `Preencha os campos!`;
+        }
+
+        fetch(baseURL)
+            .then(res => res.json())
+            .then(personagens => {
+                
+                if (personagens.some(p => p.id == id)) {
+                    lista.style.display = 'block';
+                    lista.innerHTML = `Esse ID já está em uso!`
+                    nomeInput.value = "";
+                    idInput.value = "";
+                    return;
+                }
+
+                if (personagens.some(p => p.nome.toLowerCase() === nome.toLowerCase())) {
+                    lista.style.display = 'block';
+                    lista.innerHTML = `Esse personagem já foi adicionado!`
+                    nomeInput.value = "";
+                    idInput.value = "";
+                    return;
+                }
+
+                // Se não existe, adiciona
+                fetch(baseURL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ id, nome })
+                })
+                    .then(() => {
+                        nomeInput.value = "";
+                        idInput.value = "";
+                        lista.style.display = "block";
+                        lista.innerHTML = "Personagem adicionado!";
+                    })
+                    .catch(err => console.log("Erro ao adicionar:", err));
+            })
+            .catch(err => console.log("Erro ao buscar personagens:", err));
+    }
+
+    function editar() {
+        const id = idInput.value.trim();
+        const nome = nomeInput.value.trim();
+
+        fetch(`${baseURL}/${id}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ nome })
+        })
+            .then(() => {
+                idInput.value = "";
+                nomeInput.value = "";
+                lista.innerHTML = `Personagem alterado!<br>
+                #${id} ~ <b>Personagem:</b> ${nome}
+                `
+            })
+            .catch(err => console.log("Erro ao editar:", err));
+    }
+
+    function remover(idParam) {
+        const id = idParam || idInput.value.trim(); // usa idParam (da lista) ou o digitado no input
+
+        if (id === "") return lista.innerHTML="Digite um ID para remover!";
+
+        fetch(`${baseURL}/${id}`, { method: "DELETE" })
+            .then(() => {
+                if (!idParam) idInput.value = "";
+                lista.innerHTML = "Personagem deletado."
+            })
+            .catch(err => console.log("Erro ao remover:", err));
+    }
+
+</script>

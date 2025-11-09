@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Peso diário (kg):<br>
+    <input type="number" id="pesoDiario" step="0.1"><br><br>
+
+    <button onclick="adicionarPeso()">Adicionar peso</button>
+    <button onclick="exibirHistorico()">Exibir histórico</button>
+    <button onclick="calcularMedia()">Calcular média</button>
+
+    <div id="divResultado"></div>
+
+</body>
+</html>
+
+<script>
+     const pesos = [];
+
+        function adicionarPeso() {
+            const peso = pesoDiario.value;
+
+            pesos.push(peso);
+
+            divResultado.innerHTML = `Peso ${peso} kg adicionado com sucesso!`;
+
+            pesoDiario.value = '';
+            pesoDiario.focus();
+        }
+
+        function exibirHistorico() {
+            divResultado.innerHTML = '';
+
+            pesos.forEach((p, index) => {
+                divResultado.innerHTML += `Dia ${index + 1}: ${p} kg<br>`;
+            });
+        }
+
+        function calcularMedia() {
+
+            const soma = pesos.reduce((acumulador, p) => acumulador + p, 0);
+            const media = soma / pesos.length;
+
+            divResultado.innerHTML = `Média dos pesos: ${media.toFixed(2)} kg`;
+        }
+</script>

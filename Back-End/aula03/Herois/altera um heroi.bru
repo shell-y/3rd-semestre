@@ -1,0 +1,25 @@
+meta {
+  name: altera um heroi
+  type: http
+  seq: 6
+}
+
+put {
+  url: http://localhost:8080/herois/0
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "nome": "Saitama",
+      "poderes": "super força",
+      "forca": 10000,
+      "aposentado": false,
+      "salario": 1500000000
+  }
+}
+
+settings {
+  encodeUrl: true
+}

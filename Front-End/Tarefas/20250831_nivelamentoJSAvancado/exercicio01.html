@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    Nome do item:
+    <input type="text" id="nomeItem"><br>
+
+    Quantidade:
+    <input type="number" id="quantidadeItem"><br>
+
+    <button id="adicionarBtn" onclick="adicionar()">Adicionar à lista</button>
+    <button id="exibirBtn" onclick="exibir()">Exibir lista</button>
+
+    <div id="divMensagem"></div>
+</body>
+</html>
+
+<script>
+    const listaCompras = [];
+
+    function adicionar() {
+        const nome = nomeItem.value;
+        const quantidade = quantidadeItem.value;
+
+        listaCompras.push({ nome, quantidade });
+
+        divMensagem.textContent = `${quantidade}x de ${nome} adicionado com sucesso!`;
+
+        nomeItem.value = '';
+        quantidadeItem.value = '';
+        nomeItem.focus();
+    }
+
+    function exibir() {
+        divMensagem.innerHTML = '';
+
+        listaCompras.forEach(item => {
+            divMensagem.innerHTML += `${item.nome} | Quantidade: ${item.quantidade}<br>`;
+        });
+    }
+</script>

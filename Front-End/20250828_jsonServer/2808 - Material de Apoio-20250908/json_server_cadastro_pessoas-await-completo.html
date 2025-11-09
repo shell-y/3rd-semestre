@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Formulário Pessoas</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f5f7fa;
+      color: #333;
+    }
+
+    h2,
+    h3 {
+      text-align: center;
+      color: #2c3e50;
+    }
+
+    .form-container {
+      max-width: 500px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .form-group input {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    button {
+      flex: 1;
+      /* ocupa espaço igualmente */
+      background: #3498db;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #2980b9;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      background: #ecf0f1;
+      margin: 5px 0;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>Cadastro de Pessoas</h2>
+
+  <div class="form-container">
+    <div class="form-group">
+      <label for="id">ID:</label>
+      <input type="text" id="id" />
+    </div>
+
+    <div class="form-group">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" />
+    </div>
+
+    <div class="buttons">
+      <button onclick="adicionar()">Adicionar</button>
+      <button onclick="alterar()">Alterar</button>
+      <button onclick="remover()">Remover</button>
+    </div>
+
+    <h3>Lista de Pessoas</h3>
+    <ul id="lista"></ul>
+  </div>
+
+  <script>
+    let pessoas = [];
+    const baseUrl = "http://localhost:8080/pessoas";
+
+    async function mostrar() {
+      lista.innerHTML=""
+      try{
+        const request = await fetch(baseUrl)
+        const data = await request.json()
+        data.forEach(element => list.innerHTML += `ID ${element.id} NOME: ${element.nome}<br/>`)
+      }
+      catch(error){
+        console.log("Deu ruim")
+      }
+        
+    }
+
+    async function adicionar() {
+
+      const nomeValor = nome.value;
+
+      const request = await fetch(baseUrl, {
+        method: "POST",
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify({
+          nome: nomeValor
+        })
+      })
+      
+      const data = await request.json()
+
+    }
+
+    async function alterar() {
+      const idValor = id.value
+       const nomeValor = nome.value;
+
+      const response = await fetch(`${baseUrl}/${idValor}`, {
+        method: "PATCH",
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify({
+          nome: nomeValor
+        })
+      })
+
+      console.log(response)
+    }
+
+    async function remover() {
+      const idValor = id.value
+
+      const response = await fetch(`${baseUrl}/${idValor}`, {
+        method: "DELETE",
+      })
+      
+      console.log("Deu certo")
+    }
+
+    mostrar()
+  </script>
+</body>
+
+</html>

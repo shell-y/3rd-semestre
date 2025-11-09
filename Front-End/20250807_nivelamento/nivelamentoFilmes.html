@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Quais os seus filmes preferidos?
+    <input type="text" id="input_filme">
+    <button onclick="cadastrarFilme(input_filme.value)">Cadastrar</button>
+    <br><br>
+    <div id="divResultado"></div>
+</body>
+</html>
+<script>
+    listarFilmes=[];
+    function cadastrarFilme(filme){
+        divResultado.innerHTML=``;
+        // Outra opção, mais performática, para tanto limpar quanto alimentar a div:
+        /*colocar em uma variável como "mensagem"
+        * for{mensagem += `${listarFilmes[i]}`;}
+        * divResultado = mensagem
+        Assim, o programa monta toda a variável para só depois alimentar a div */
+
+        
+        listarFilmes.push(filme);
+        input_filme.value=``
+        for(let i = 0; i < listarFilmes.length; i++){
+            divResultado.innerHTML+=`${listarFilmes[i]}<br>`
+        }
+        /* Também dá para usar nomeDaLista.join('<br>') 
+        para exibir toda a lista separada por <br> sem precisar usar for */
+        divResultado.innerHTML+=`<br><button onclick="limparLista()">Limpar lista</button>`
+    }
+    function limparLista(){
+        // At position 2, remove 1 item, add "Lemon" and "Kiwi"
+        // array.splice(2, 1, "Lemon", "Kiwi");
+
+        //começando na posição 0, apague a quantidade de itens de toda a lista
+        listarFilmes.splice(0, listarFilmes.length);
+
+        divResultado.innerHTML = listarFilmes;
+    }
+</script>

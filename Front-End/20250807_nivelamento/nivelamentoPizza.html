@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nivelamento</title>
+</head>
+<body>
+    <p>Sabor da pizza:</p>
+    <input id="input_sabor">
+    <p>Preço da pizza:</p>
+    <input type="number" id="input_preco">
+    <p>Quantos amigos vão comer?</p>
+    <input type="number" id="input_amigos">
+    <br><br>
+    <button onClick="calcularDivisao()">Ver valor por amigo</button>
+    <div id="div_resultado"></div>
+</body>
+</html>
+
+<script>
+    function calcularDivisao(){
+        const sabor = input_sabor.value;
+        const preco = Number(input_preco.value);
+        const amigos = Number(input_amigos.value);
+        var divisao = preco / amigos;
+
+        div_resultado.innerHTML = `Cada amigo vai colaborar com R$${divisao} para a pizza de ${sabor}.`
+    }
+</script>

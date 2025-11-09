@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Quais as suas músicas preferidas?
+    <input type="text" id="input_musica">
+    <br>
+    <button onclick="cadastrarMusica(input_musica.value)">Cadastrar</button>
+    <button onclick="exibirMusicas()">Exibir</button>
+    <br><br>
+    <div id="divResultado"></div>
+    <br><br>
+    De... <input type="number" id="inputFrom"> 
+    Até... <input type="number" id="inputUntil">
+     <button onclick="filtrar(inputFrom.value,inputUntil.value)">Filtrar</button>
+</body>
+</html>
+<script>
+    listaMusicas=[];
+    function cadastrarMusica(musica){
+        listaMusicas.push(musica);
+        input_musica.value=``;
+    }
+    function exibirMusicas(){
+        divResultado.innerHTML=``;
+        for(let i = 0; i < listaMusicas.length; i++){
+            divResultado.innerHTML+=`${listaMusicas[i]}<br>`;
+        }
+    }
+    function filtrar(from,until){
+        divResultado.innerHTML=``;
+        for(let i = (from-1); i < until; i++){
+            divResultado.innerHTML+=`${listaMusicas[i]}<br>`;
+        }
+    }
+</script>

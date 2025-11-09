@@ -1,0 +1,20 @@
+meta {
+  name: DownloadImagem
+  type: http
+  seq: 10
+}
+
+get {
+  url: http://localhost:8080/imagens/download/maxresdefault.jpg
+  body: multipartForm
+  auth: inherit
+}
+
+body:multipart-form {
+  arquivo: @file(C:\Users\shell_e0l7hpy\OneDrive\Área de Trabalho\Wallpapers\maxresdefault.jpg)
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

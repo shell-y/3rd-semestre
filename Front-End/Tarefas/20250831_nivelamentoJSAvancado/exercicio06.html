@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Nome da receita:<br>
+    <input type="text" id="nomeReceita"><br>
+
+    Tempo de preparo (minutos):<br>
+    <input type="number" id="tempoReceita"><br><br>
+
+    <button onclick="cadastrarReceita()">Cadastrar</button><br><br>
+
+    Filtrar por tempo menor ou igual a:<br>
+    <input type="number" id="filtroTempo">
+    <button onclick="filtrarReceitas()">Filtrar por tempo</button>
+
+    <div id="divResultado"></div>    
+</body>
+</html>
+
+<script>
+    const receitas = [];
+
+        function cadastrarReceita() {
+            const nome = nomeReceita.value;
+            const tempo = tempoReceita.value;
+
+            receitas.push({ nome, tempo });
+
+            divResultado.innerHTML = `${nome} cadastrada com sucesso! Tempo de preparo: ${tempo} minutos.`;
+
+            nomeReceita.value = '';
+            tempoReceita.value = '';
+            nomeReceita.focus();
+        }
+
+        function filtrarReceitas() {
+            divResultado.innerHTML = '';
+            const limite = parseInt(filtroTempo.value);
+
+            const receitasFiltradas = receitas.filter(r => r.tempo <= limite);
+
+            receitasFiltradas.forEach(r => {
+                divResultado.innerHTML += `${r.nome}: ${r.tempo} minutos<br>`;
+            });
+        }
+
+</script>

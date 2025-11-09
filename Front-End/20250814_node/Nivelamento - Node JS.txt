@@ -1,0 +1,77 @@
+Nivelamento - Node JS
+
+1. Prática de Node JS
+Dica: use os métodos para vetor, como .map(), .filter(), .find(), .splice() para facilitar a manipulação e validação das listas.
+
+1. Crie uma função que receba um vetor de números e retorne o primeiro elemento.
+
+
+2. Crie uma função que receba um vetor de números e retorne uma nova lista com os 3 últimos elementos.
+
+
+3. Crie uma função que receba um vetor de números e retorne a quantidade de elementos pares no vetor.
+
+
+4. Crie uma função que receba um vetor de números e retorne a quantidade de elementos ímpares no vetor.
+
+
+5. Crie uma função que receba um vetor de números e retorne a quantidade de números negativos presentes no vetor.
+
+
+6. Crie uma função que receba um vetor de números e retorne a soma de todos os elementos do vetor.
+
+
+7. Crie uma função que receba um vetor de números e retorne o maior valor presente no vetor.
+
+
+8. Crie uma função que receba um vetor de números e retorne o menor valor presente no vetor.
+
+
+9. Crie uma função que receba um vetor de números e retorne true se todos os elementos forem positivos, ou false caso contrário.
+
+
+10. Crie uma função que receba um vetor de números e um valor, e retorne a quantidade de vezes que esse valor aparece no vetor.
+
+
+11. Crie uma função que receba um vetor de números e retorne um novo vetor contendo apenas os números pares do vetor original.
+
+
+12. Crie uma função que receba um vetor de números e retorne um novo vetor contendo apenas os números ímpares do vetor original.
+
+
+13. Crie uma função que receba um vetor de números e retorne um novo vetor com os elementos em ordem inversa.
+
+
+14. Crie uma função que receba um vetor de números e retorne true se houver elementos duplicados no vetor, ou false caso contrário.
+
+
+15. Crie uma função que receba um vetor de números e retorne a média dos valores.
+
+
+16. Crie uma função que receba um vetor de números e um número n, e retorne um novo vetor contendo os valores da lista original que são maiores que n.
+
+
+17. Crie uma função que receba um vetor de números e retorne apenas os valores únicos (sem duplicatas).
+
+
+18. Crie uma função que receba um vetor de números e retorne true se o vetor estiver ordenado em ordem crescente, ou false caso contrário. 
+Extra: valide se todos os elementos são números, caso contrário retorne "Lista Inválida".
+
+
+19. Crie uma função que receba dois vetores e retorne um novo vetor com a soma dos elementos de mesma posição, ou "Vetores de tamanhos diferentes".
+
+
+20. (DESAFIO) Crie uma função que receba um vetor de números e um número n, e retorne os n maiores valores do vetor (em qualquer ordem).
+
+
+Exemplo 1:
+
+    lista - [1, 34, 78, 2, 5, 77]
+    n - 2
+    retorno - [77,78]
+
+Exemplo 2:
+
+    lista - [42, 1, 3, 12, 273, 19]
+    n - 4
+    retorno - [42, 12, 273, 19]

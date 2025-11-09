@@ -1,0 +1,24 @@
+{
+  "pessoas": [
+    {
+      "nome": "Fulano",
+      "id": 1
+    },
+    {
+      "nome": "Ciclano",
+      "id": 2
+    },
+    {
+      "nome": "Cicrana",
+      "id": 3
+    },
+    {
+      "nome": "Beltrano",
+      "id": 4
+    },
+    {
+      "nome": "Beltrana",
+      "id": 5
+    }
+  ]
+}

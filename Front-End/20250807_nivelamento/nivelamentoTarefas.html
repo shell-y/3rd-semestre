@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="inputTarefa" placeholder="Informe uma tarefa...">
+    <select id="selectStatus">
+        <option value="#" selected disabled>Status da tarefa</option>
+        <option value="pendente">pendente</option>
+        <option value="concluida">concluida</option>
+    </select>
+    <br><br>
+    <button onclick="cadastrarTarefa(inputTarefa.value,selectStatus.value)">Adicionar tarefa</button>
+    <button onclick="exibirTarefas()">Exibir todas</button>
+    <br><br>
+    Filtros: 
+    <button onclick="exibirPendentes()">Ver somente pendentes</button>
+    <button onclick="exibirConcluidas()">Ver somente concluídas</button>
+    <BR></BR>
+    <div id="divResultado"></div>
+</body>
+</html>
+<script>
+    listarTarefas=[];
+    function cadastrarTarefa(tarefa,status){
+        listarTarefas.push({tarefa,status});
+        inputTarefa.value = ``;
+        inputTarefa.focus();
+    }
+    function exibirTarefas(){
+        divResultado.innerHTML=``;
+        for(let i = 0; i < listarTarefas.length; i++){
+            divResultado.innerHTML+=`<b>Tarefa:</b> ${listarTarefas[i].tarefa} | <b>Status:</b> ${listarTarefas[i].status}<br>`
+        }
+    }
+    function exibirPendentes(){
+        divResultado.innerHTML=``;
+        for(let i = 0; i<listarTarefas.length;i++){
+            if(listarTarefas[i].status == "pendente"){
+                divResultado.innerHTML+=`<b>Tarefa:</b> ${listarTarefas[i].tarefa} | <b>Status:</b> ${listarTarefas[i].status}<br>`
+            }
+        }
+    }
+    function exibirConcluidas(){
+        divResultado.innerHTML=``;
+        for(let i = 0; i<listarTarefas.length;i++){
+            if(listarTarefas[i].status == "concluida"){
+                divResultado.innerHTML+=`<b>Tarefa:</b> ${listarTarefas[i].tarefa} | <b>Status:</b> ${listarTarefas[i].status}<br>`
+            }
+        }
+    }
+</script>

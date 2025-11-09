@@ -1,0 +1,33 @@
+Spring Boot Annotations
+
+entity
+@Entity - define que aquela classe é uma entidade e será criada uma tabela no banco de dados com aquele mesmo nome e contendo os seus respectivos atributos
+@Id - define que o atributo 
+
+service
+@Service - define que aquela classe é um serviço
+
+controller
+@RestController - define que aquela classe é um serviço
+@RequestMapping - define uma url padrão para todas as chamadas dentro de um controller
+@GetMapping - define que aquele método deve ser chamado quando verbo da requisição for GET
+@PostMapping - define que aquele método deve ser chamado quando verbo da requisição for POST
+@PutMapping - define que aquele método deve ser chamado quando verbo da requisição for PUT
+@DeleteMapping - define que aquele método deve ser chamado quando verbo da requisição for DELETE
+
+Status code
+2xx - Success
+200 - Ok
+201 - Created
+204 - No Content
+
+4xx - Client Error
+400 - Bad Request
+401 - Unauthorized
+403 - Forbidden
+404 - Not Found
+409 - Conflict
+
+5xx - Server Error
+500 - Internal Server Error
+502 - Bad Gateway

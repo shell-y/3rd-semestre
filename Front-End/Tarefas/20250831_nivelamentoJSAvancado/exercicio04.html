@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Produto: 
+    <input type="text" id="nomeProduto"><br>
+
+    Quantidade em estoque: 
+    <input type="number" id="quantidadeProduto"><br>
+
+    <button onclick="adicionarProduto()">Adicionar produto</button><br><br>
+
+    Filtrar produtos com quantidade menor que: 
+    <input type="number" id="filtroQuantidade">
+    <button onclick="filtrarProdutos()">Filtrar</button>
+
+    <div id="divResultado"></div>
+</body>
+</html>
+
+<script>
+    const estoque = [];
+
+        function adicionarProduto() {
+            const nome = nomeProduto.value;
+            const quantidade = quantidadeProduto.value;
+
+            estoque.push({ nome, quantidade });
+
+            divResultado.innerHTML = `${nome} adicionado ao estoque com ${quantidade} unidades.`;
+
+            nomeProduto.value = '';
+            quantidadeProduto.value = '';
+            nomeProduto.focus();
+        }
+
+        function filtrarProdutos() {
+            divResultado.innerHTML = '';
+
+            const limite = filtroQuantidade.value;
+
+            const produtosFiltrados = estoque.filter(prod => prod.quantidade < limite);
+
+            produtosFiltrados.forEach(prod => {
+                divResultado.innerHTML += `${prod.nome}: ${prod.quantidade} unidades<br>`;
+            });
+        }
+</script>

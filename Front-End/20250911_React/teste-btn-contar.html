@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        background-color: #000;
+        color: palevioletred;
+    }
+</style>
+<body>
+    <button onclick="contar()">Contar</button>
+    <div id="root"></div>
+</body>
+</html>
+
+<script>
+    function contar(){
+        let mensagem = ``;
+        for (let index = 1; index <= 10000; index++) {
+            mensagem+=`Contando... Número atual ${index}<br>`
+        }
+        root.innerHTML = mensagem;
+    }
+</script>

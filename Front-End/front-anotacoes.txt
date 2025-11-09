@@ -1,0 +1,142 @@
+.: ANOTAÇÕES FRONT-END :.
+
+array.slice(inicio, fim);
+
+inicio → índice onde começa a cópia.
+fim → índice onde termina (não incluído).
+Se algum valor for negativo, ele é contado de trás para frente.
+
+No caso de slice(-3):
+O -3 significa “comece 3 posições antes do final”.
+Como não passamos o segundo parâmetro (fim), ele vai até o fim do array.
+Assim, retorna os 3 últimos elementos.
+
+---------------------------------------------------------
+
+{21/08/2025}
+
+Callback ~> uma função passada como argumento para ser executada
+função anônima ~> funcaoInicial(function(){});
+
+Função assíncrona ~> uma função que roda em paralelo; não necessariamente na ordem do codigo.
+
+---------------------------------------------------------
+
+{28/08/2025}
+
+npm -g ~> instala o pacote globalmente
+npm ~> instala no projeto atual apenas
+npx ~> instala e deleta somente naquele comando feito
+
+watch ~> atualizar em tempo real
+
+promise ~> tenho uma ação programada, pode dar certo ou pode dar errado
+	then ~> se der certo, faça isso
+	catch ~> se der erro, faça isso
+
+---------------------------------------------------------
+
+{11/09/2025} REACT
+
+Foi criado para otimizar o desempenho nas renderizações do Facebook
+
+Framework ~> você precisa codar se adaptando ao ambiente do framework
+Biblioteca ~> você pode importá-la no seu código
+
+Melhorou o desempenho na renderização pois criou o ~*Virtual DOM*~
+que cria uma DOM virtual em memória e transmite para a DOM "real" somente depois de finalizada, ou seja, renderiza uma só vez.
+
+Diffing ~> "variável" onde guarda as alterações
+Reconciliation ~> faz uma comparação entre o diffing e o antigo código, altera somente o que foi modificado e aplica na DOM "real"
+
+Vite ~> ferramenta para criar a estrutura do projeto em react
+
+props (padrão no mercado para a palavra 'propriedades') ~> importar características externas. Basicamente um parâmetro.
+
+---------------------------------------------------------
+
+{18/09/2025}
+
+package.json ~> lista as dependências e as informações do projeto
+package-lock.json ~> "tranca" as versões das dependências que estão sendo usadas
+
+dependencies ~> são as que são instaladas ao rodar o projeto
+devDependencies ~> serão usadas somente em ambiente de desenvolvimento
+
+jsx ~> javascript+xml; formato do react
+
+export default ~> permite que o componente possa ser renomeado na importação
+
+{props.children} dentro do componente para receber complementos do arquivo de importação
+
+---------------------------------------------------------
+
+{25/09/2025}
+
+TAILWIND ~> framework que fornece classes utilitárias (blocos de estilo que executam UMA única função)
+Só importa uma classe se você for usar
+
+Classes utilitárias: representam a estilização
+Classes semânticas: representam o elemento
+
+---------------------------------------------------------
+
+{02/10/2025}
+
+CICLO DE VIDA ~> etapas para um componente ser renderizado/atualizado
+Consiste em 3 etapas:
+	I. Montagem
+	II. Atualização
+	III. Desmontagem
+
+STATE ~> Armazena informações do componente. Uma variável que persiste entra as atualizações.
+É usado quando precisamos atualizar dados dinamicamente que serão refletidos na interface.
+
+Quando chamamos uma função com parênteses(), ela é chamada automaticamente ao carregar a página. Para ela ser iniciada somente quando chamada, mencionar a função SEM os parênteses.
+
+---------------------------------------------------------
+
+{09/10/2025}
+
+useEffect(f,[]) ~> é uma função que é executada ao ser alterado um estado. Ao colocar [] em seu parâmetro { useEffect(função,[]) } ele só será chamado quando a lista[] for criada.
+StrictMode ~> roda mais 3x para garantir que está correto
+
+ESTUDAR:
+- Semântica das funções (useState, useEffect, filter(_,x))
+- Etapas do Ciclo de vida do componente
+- StrictMode
+
+---------------------------------------------------------
+
+
+{06/11/2025} .:* PILHA (STACK)
+
+Segue o conceito LIFO - Last In, First Out
+
+Métodos da pilha:
++ Push() ~> Adiciona um elemento no topo da pilha
++ Pop() ~> Retira o elemento do topo da pilha
+
+Criar uma variável topo começando em -1 para ele não iniciar no primeiro elemento [0]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

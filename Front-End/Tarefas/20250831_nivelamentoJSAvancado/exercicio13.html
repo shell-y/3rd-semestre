@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Nome do filme:<br>
+    <input type="text" id="nomeFilme"><br>
+
+    Gênero do filme:<br>
+    <input type="text" id="generoFilme"><br>
+
+    Nota de avaliação:<br>
+    <input type="number" id="notaFilme" step="0.1" min="0" max="10"><br><br>
+
+    <button onclick="cadastrarFilme()">Cadastrar filme</button>
+    <button onclick="topFilmesAcao()">Top Filmes Ação</button>
+
+    <div id="divResultado"></div>
+</body>
+</html>
+
+<script>
+    const filmes = [];
+
+        function cadastrarFilme() {
+            const nome = nomeFilme.value;
+            const genero = generoFilme.value;
+            const nota = notaFilme.value;
+
+            filmes.push({ nome, genero, nota });
+
+            divResultado.innerHTML = `Filme "${nome}" do gênero "${genero}" cadastrado com nota ${nota}!`;
+
+            nomeFilme.value = '';
+            generoFilme.value = '';
+            notaFilme.value = '';
+            nomeFilme.focus();
+        }
+
+        function topFilmesAcao() {
+            const filmesAcao = filmes.filter(f => f.genero.toLowerCase() === 'ação');
+
+            filmesAcao.sort((a, b) => b.nota - a.nota);
+
+            const top5 = filmesAcao.slice(0, 5);
+
+            // Cria lista formatada usando map
+            const listaFormatada = top5.map(f => `Filme: ${f.nome} | Nota: ${f.nota.toFixed(1)}`).join('<br>');
+
+            // Calcula a média das notas dos filmes de ação
+            const mediaNotas = filmesAcao.reduce((acc, f) => acc + f.nota, 0) / filmesAcao.length;
+
+            // Exibe resultados
+            divResultado.innerHTML = `Top 5 Filmes de Ação:<br>${listaFormatada}<br><br>Média das notas de filmes de ação: ${mediaNotas.toFixed(2)}`;
+        }
+</script>

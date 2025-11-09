@@ -1,0 +1,32 @@
+{
+  "personagens": [
+    {
+      "nome": "Gumball",
+      "id": "1"
+    },
+    {
+      "id": "2",
+      "nome": "Darwin"
+    },
+    {
+      "id": "3",
+      "nome": "Anais"
+    },
+    {
+      "id": "4",
+      "nome": "Nicole"
+    },
+    {
+      "nome": "Ricardo",
+      "id": "5"
+    },
+    {
+      "id": "6",
+      "nome": "Penny"
+    },
+    {
+      "id": "7",
+      "nome": "Carrie"
+    }
+  ]
+}

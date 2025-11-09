@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Nome do produto:<br>
+    <input type="text" id="nomeProduto"><br>
+
+    Preço:<br>
+    <input type="number" id="precoProduto" step="0.01" min="0"><br>
+
+    Quantidade em estoque:<br>
+    <input type="number" id="quantidadeProduto" min="0"><br><br>
+
+    <button onclick="cadastrarProduto()">Cadastrar produto</button><br><br>
+
+    Filtrar produtos em promoção (preço menor que):<br>
+    <input type="number" id="filtroPreco" step="0.01" min="0">
+    <button onclick="produtosPromocao()">Produtos em promoção</button>
+
+    <div id="divResultado"></div>
+</body>
+</html>
+
+<script>
+    const produtos = [];
+
+        function cadastrarProduto() {
+            const nome = nomeProduto.value.trim();
+            const preco = precoProduto.value;
+            const quantidade = parseInt(quantidadeProduto.value);
+
+            produtos.push({ nome, preco, quantidade });
+
+            divResultado.innerHTML = `Produto "${nome}" cadastrado com preço R$ ${preco.toFixed(2)} e quantidade ${quantidade}.`;
+
+            nomeProduto.value = '';
+            precoProduto.value = '';
+            quantidadeProduto.value = '';
+            nomeProduto.focus();
+        }
+
+        function produtosPromocao() {
+            const limite = filtroPreco.value;
+
+            // Filtra produtos com preço menor que o limite
+            const promocao = produtos
+                .filter(p => p.preco < limite)
+                .map(p => ({ ...p, precoFinal: p.preco * 0.9 })) // aplica 10% de desconto
+                .sort((a, b) => a.precoFinal - b.precoFinal); // ordena pelo preço final
+
+            // Exibe os produtos em promoção
+            divResultado.innerHTML = `Produtos em promoção:<br>`;
+            promocao.forEach(p => {
+                divResultado.innerHTML += `${p.nome}: R$ ${p.precoFinal.toFixed(2)}<br>`;
+            });
+
+            // Calcula o total do estoque em valor monetário usando reduce
+            const totalEstoque = promocao.reduce((acc, p) => acc + (p.precoFinal * p.quantidade), 0);
+            divResultado.innerHTML += `<br>Total em estoque dos produtos em promoção: R$ ${totalEstoque.toFixed(2)}`;
+        }
+</script>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Título do livro: 
+    <input type="text" id="tituloLivro"><br>
+
+    Autor: 
+    <input type="text" id="autorLivro"><br>
+
+    <button onclick="cadastrarLivro()">Cadastrar</button>
+    <button onclick="exibirLivros()">Exibir livros</button>
+
+    <div id="divResultado"></div>
+    </body>
+</html>
+
+    <script>
+        const livros = [];
+
+        function cadastrarLivro() {
+            const titulo = tituloLivro.value;
+            const autor = autorLivro.value;
+
+            livros.push({ titulo, autor });
+
+            divResultado.textContent = `${titulo} cadastrado com sucesso!`;
+
+            tituloLivro.value = '';
+            autorLivro.value = '';
+            tituloLivro.focus();
+        }
+
+        function exibirLivros() {
+            divResultado.innerHTML = '';
+
+            livros.forEach(livro => {
+                divResultado.innerHTML += `Título: ${livro.titulo} | Autor: ${livro.autor}<br>`;
+            });
+        }
+    </script>

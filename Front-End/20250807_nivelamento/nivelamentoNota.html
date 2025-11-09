@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nivelamento</title>
+</head>
+
+<body>
+    1ª nota:
+    <input type="number" id="input_nota1">
+    <br><br>
+    2ª nota:
+    <input type="number" id="input_nota2">
+    <button onclick="calcularMedia()">Verificar situação</button>
+    <br><br>
+    <div id="div_resultado"></div>
+</body>
+
+</html>
+<script>
+    function calcularMedia() {
+        const nota1 = Number(input_nota1.value);
+        const nota2 = Number(input_nota2.value);
+        var media = (nota1 + nota2) / 2;
+
+        if (media >= 6) {
+            div_resultado.innerHTML = `Parabéns, aprovado!`;
+        } else {
+            div_resultado.innerHTML = `Tente outra vez...`;
+        }
+    }
+</script>

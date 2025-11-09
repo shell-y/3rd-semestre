@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Exercício:<br>
+    <input type="text" id="nomeExercicio"><br>
+
+    Repetições:<br>
+    <input type="number" id="repeticoesExercicio"><br><br>
+
+    <button onclick="adicionarExercicio()">Adicionar</button>
+    <button onclick="exibirExercicios()">Exibir exercícios</button>
+    <button onclick="ordenarExercicios()">Ordenar por repetições</button>
+
+    <div id="divResultado"></div>
+</body>
+</html>
+
+<script>
+    const listaExercicios = [];
+
+        function adicionarExercicio() {
+            const nome = nomeExercicio.value.trim();
+            const repeticoes = parseInt(repeticoesExercicio.value);
+
+            listaExercicios.push({ nome, repeticoes });
+
+            divResultado.innerHTML = `${nome} com ${repeticoes} repetições adicionado!`;
+
+            nomeExercicio.value = '';
+            repeticoesExercicio.value = '';
+            nomeExercicio.focus();
+        }
+
+        function exibirExercicios() {
+            divResultado.innerHTML = '';
+            listaExercicios.forEach(ex => {
+                divResultado.innerHTML += `${ex.nome}: ${ex.repeticoes} repetições<br>`;
+            });
+        }
+
+        function ordenarExercicios() {
+            divResultado.innerHTML = '';
+            listaExercicios.sort((a, b) => b.repeticoes - a.repeticoes);
+
+            listaExercicios.forEach(ex => {
+                divResultado.innerHTML += `${ex.nome}: ${ex.repeticoes} repetições<br>`;
+            });
+        }
+</script>

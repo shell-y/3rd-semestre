@@ -1,0 +1,22 @@
+meta {
+  name: CriarPessoaH2
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://localhost:8080/pessoas
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "nome":"Maria",
+    "idade":35
+  }
+}
+
+settings {
+  encodeUrl: true
+}
