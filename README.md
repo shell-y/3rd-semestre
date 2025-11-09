@@ -3,7 +3,6 @@
 [![Feito com Java](https://img.shields.io/badge/☕_Feito_com-Java-FF74D1?style=for-the-badge&logo=openjdk&logoColor=white)]()  
 [![Spring Boot](https://img.shields.io/badge/⚙️_Spring_Boot-7C4CC2?style=for-the-badge&logo=springboot&logoColor=white)]()  
 [![React](https://img.shields.io/badge/⚛️_React-05F2DB?style=for-the-badge&logo=react&logoColor=white)]()  
-[![MySQL](https://img.shields.io/badge/🗃️_MySQL-3E8EDE?style=for-the-badge&logo=mysql&logoColor=white)]()  
 [![GitHub](https://img.shields.io/badge/🌿_GitHub-24292E?style=for-the-badge&logo=github&logoColor=white)]()  
 [![SPTech Student](https://img.shields.io/badge/🎓_SPTech_Student-FF74D1?style=for-the-badge&logo=googleclassroom&logoColor=white)]()
 
