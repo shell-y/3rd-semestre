@@ -1,6 +1,6 @@
 {
   // Tema base (use um claro simples pra combinar)
-  "workbench.colorTheme": "Gray Matter Light",
+  "workbench.colorTheme": "Black on Light Gray",
 
   // 🎨 Paleta Chococat
   "workbench.colorCustomizations": {
