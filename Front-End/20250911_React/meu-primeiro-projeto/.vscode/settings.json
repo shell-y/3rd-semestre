@@ -1,6 +1,6 @@
 {
   // Tema base (use um claro simples pra combinar)
-  "workbench.colorTheme": "Default Light+",
+  "workbench.colorTheme": "Quiet Light",
 
   // 🎨 Paleta Chococat
   "workbench.colorCustomizations": {
