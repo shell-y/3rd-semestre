@@ -1,0 +1,82 @@
+{
+  // Tema base (use um claro simples pra combinar)
+  "workbench.colorTheme": "Default Light+",
+
+  // 🎨 Paleta Chococat
+  "workbench.colorCustomizations": {
+    // Fundo geral
+    "editor.background": "#FFF6FB",
+    "editor.foreground": "#2B2B2B",
+    "editorLineNumber.foreground": "#E0BFCF",
+    "editorLineNumber.activeForeground": "#F2A1BF",
+
+    // Cursor & seleção
+    "editorCursor.foreground": "#FF8FB7",
+    "editor.selectionBackground": "#FAD9E8",
+    "editor.inactiveSelectionBackground": "#FBE6F0",
+    "editorBracketMatch.border": "#F2A1BF",
+
+    // Realces
+    "editor.wordHighlightBackground": "#FBE6F080",
+    "editor.wordHighlightStrongBackground": "#FAD9E880",
+
+    // Barra superior (title bar)
+    "titleBar.activeBackground": "#FBEFEF",
+    "titleBar.activeForeground": "#2B2B2B",
+    "titleBar.inactiveBackground": "#F5E3EB",
+    "titleBar.inactiveForeground": "#B799AA",
+
+    // Activity Bar (barra lateral de ícones)
+    "activityBar.background": "#2B2B2B",
+    "activityBar.foreground": "#F8C7D8",
+    "activityBarBadge.background": "#F8C7D8",
+    "activityBarBadge.foreground": "#2B2B2B",
+
+    // Side Bar
+    "sideBar.background": "#FFF9FC",
+    "sideBar.foreground": "#4A3E43",
+    "sideBarSectionHeader.background": "#FBEFEF",
+    "sideBarSectionHeader.foreground": "#2B2B2B",
+
+    // Status Bar
+    "statusBar.background": "#2B2B2B",
+    "statusBar.foreground": "#F8C7D8",
+    "statusBar.noFolderBackground": "#2B2B2B",
+    "statusBar.debuggingBackground": "#FF8FB7",
+    "statusBar.debuggingForeground": "#2B2B2B",
+
+    // Editor / bordas
+    "editorGroup.border": "#F2D4E3",
+    "editorGroupHeader.tabsBackground": "#FFEFF7",
+    "tab.activeBackground": "#FFF6FB",
+    "tab.activeForeground": "#2B2B2B",
+    "tab.inactiveBackground": "#FBEFEF",
+    "tab.inactiveForeground": "#B799AA",
+    "tab.border": "#F2D4E3",
+
+    // Barra de rolagem
+    "scrollbarSlider.background": "#F2D4E399",
+    "scrollbarSlider.hoverBackground": "#F2AFC599",
+    "scrollbarSlider.activeBackground": "#FF8FB799",
+
+    // Notificações / input
+    "input.background": "#FFF6FB",
+    "input.border": "#F2D4E3",
+    "dropdown.background": "#FFF6FB",
+    "dropdown.border": "#F2D4E3",
+    "button.background": "#F8C7D8",
+    "button.foreground": "#2B2B2B",
+    "button.hoverBackground": "#F2AFC5"
+  },
+
+  // 🌸 Cores de sintaxe (suave, inspirada no pixel art)
+  "editor.tokenColorCustomizations": {
+    "comments": "#C6A9BE",
+    "keywords": "#F08BB3",
+    "strings": "#F2AFC5",
+    "numbers": "#F5A7D6",
+    "functions": "#2B2B2B",
+    "variables": "#3E3236",
+    "types": "#FF8FB7"
+  }
+}
